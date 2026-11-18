@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Diary | MyFitnessPal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <span class="logo-mark"><i class="fas fa-heartbeat"></i></span>
+                    myfitnesspal
+                </a>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <!-- Injected by auth.js -->
+            </ul>
+            <div class="auth-buttons">
+                <!-- Injected by auth.js -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Food Diary View -->
+    <section class="dashboard">
+        <div class="container dashboard-grid">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                    <li><a href="food-diary.html" class="active"><i class="fas fa-utensils"></i> Food Diary</a></li>
+                    <li><a href="exercise.html"><i class="fas fa-running"></i> Exercise Diary</a></li>
+                    <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress & Weight</a></li>
+                    <li><a href="goals.html"><i class="fas fa-bullseye"></i> Nutrition Goals</a></li>
+                    <li><a href="professionals.html"><i class="fas fa-user-tie"></i> Book a Coach</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li id="premium-sidebar-link"><a href="premium.html" style="color: #d97706;"><i class="fas fa-crown"></i> Premium</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <!-- Date Navigation Bar -->
+                <div class="diary-date-nav">
+                    <h1 style="font-size: 26px; font-weight: 800; color: var(--navy-deep);">Your Food Diary</h1>
+                    <div class="diary-date-selector">
+                        <button id="prev-day-btn" title="Previous Day"><i class="fas fa-chevron-left"></i></button>
+                        <span class="current-date-title" id="current-date-display">Today</span>
+                        <button id="next-day-btn" title="Next Day"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Daily Summary Equation Banner -->
+                <div class="card mb-4" style="padding: 20px 24px; background: linear-gradient(135deg, #0a2540, #0052cc); color: var(--white);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                        <div>
+                            <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #93c5fd;">Daily Budget</span>
+                            <div style="font-size: 28px; font-weight: 800;"><span id="diary-cal-goal">2,100</span> <span style="font-size: 14px; font-weight: 500; opacity: 0.8;">kcal</span></div>
+                        </div>
+                        <div style="font-size: 22px; opacity: 0.6;">-</div>
+                        <div>
+                            <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #cbd5e1;">Food Logged</span>
+                            <div style="font-size: 28px; font-weight: 800;"><span id="diary-cals-consumed">0</span> <span style="font-size: 14px; font-weight: 500; opacity: 0.8;">kcal</span></div>
+                        </div>
+                        <div style="font-size: 22px; opacity: 0.6;">+</div>
+                        <div>
+                            <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #a7f3d0;">Exercise</span>
+                            <div style="font-size: 28px; font-weight: 800; color: #34d399;"><span id="diary-cals-burned">0</span> <span style="font-size: 14px; font-weight: 500; opacity: 0.8;">kcal</span></div>
+                        </div>
+                        <div style="font-size: 22px; opacity: 0.6;">=</div>
+                        <div>
+                            <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #93c5fd;">Remaining</span>
+                            <div style="font-size: 32px; font-weight: 800; color: var(--accent-cyan);" id="diary-cals-remaining">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Breakfast Card -->
+                <div class="meal-card" id="card-breakfast">
+                    <div class="meal-header">
+                        <div class="meal-title-group">
+                            <i class="fas fa-coffee" style="color: #f59e0b;"></i>
+                            <h3>Breakfast</h3>
+                        </div>
+                        <span class="meal-cals-badge" id="breakfast-calories">0 kcal</span>
+                    </div>
+                    <table class="meal-table">
+                        <thead>
+                            <tr>
+                                <th>Food Item</th>
+                                <th class="text-right">Servings</th>
+                                <th class="text-right">Calories</th>
+                                <th class="text-right">Carbs</th>
+                                <th class="text-right">Fat</th>
+                                <th class="text-right">Protein</th>
+                                <th class="text-right">Sodium</th>
+                                <th class="text-right"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="breakfast-entries">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                    <div class="meal-footer-actions">
+                        <button class="btn btn-sm btn-primary add-food-btn" data-meal="Breakfast">
+                            <i class="fas fa-plus"></i> Add Food
+                        </button>
+                        <span style="font-size: 13px; color: var(--text-muted);" id="breakfast-macro-subtotal"></span>
+                    </div>
+                </div>
+
+                <!-- Lunch Card -->
+                <div class="meal-card" id="card-lunch">
+                    <div class="meal-header">
+                        <div class="meal-title-group">
+                            <i class="fas fa-sun" style="color: #3b82f6;"></i>
+                            <h3>Lunch</h3>
+                        </div>
+                        <span class="meal-cals-badge" id="lunch-calories">0 kcal</span>
+                    </div>
+                    <table class="meal-table">
+                        <thead>
+                            <tr>
+                                <th>Food Item</th>
+                                <th class="text-right">Servings</th>
+                                <th class="text-right">Calories</th>
+                                <th class="text-right">Carbs</th>
+                                <th class="text-right">Fat</th>
+                                <th class="text-right">Protein</th>
+                                <th class="text-right">Sodium</th>
+                                <th class="text-right"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="lunch-entries">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                    <div class="meal-footer-actions">
+                        <button class="btn btn-sm btn-primary add-food-btn" data-meal="Lunch">
+                            <i class="fas fa-plus"></i> Add Food
+                        </button>
+                        <span style="font-size: 13px; color: var(--text-muted);" id="lunch-macro-subtotal"></span>
+                    </div>
+                </div>
+
+                <!-- Dinner Card -->
+                <div class="meal-card" id="card-dinner">
+                    <div class="meal-header">
+                        <div class="meal-title-group">
+                            <i class="fas fa-moon" style="color: #8b5cf6;"></i>
+                            <h3>Dinner</h3>
+                        </div>
+                        <span class="meal-cals-badge" id="dinner-calories">0 kcal</span>
+                    </div>
+                    <table class="meal-table">
+                        <thead>
+                            <tr>
+                                <th>Food Item</th>
+                                <th class="text-right">Servings</th>
+                                <th class="text-right">Calories</th>
+                                <th class="text-right">Carbs</th>
+                                <th class="text-right">Fat</th>
+                                <th class="text-right">Protein</th>
+                                <th class="text-right">Sodium</th>
+                                <th class="text-right"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="dinner-entries">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                    <div class="meal-footer-actions">
+                        <button class="btn btn-sm btn-primary add-food-btn" data-meal="Dinner">
+                            <i class="fas fa-plus"></i> Add Food
+                        </button>
+                        <span style="font-size: 13px; color: var(--text-muted);" id="dinner-macro-subtotal"></span>
+                    </div>
+                </div>
+
+                <!-- Snacks Card -->
+                <div class="meal-card" id="card-snacks">
+                    <div class="meal-header">
+                        <div class="meal-title-group">
+                            <i class="fas fa-apple-alt" style="color: #ef4444;"></i>
+                            <h3>Snacks</h3>
+                        </div>
+                        <span class="meal-cals-badge" id="snacks-calories">0 kcal</span>
+                    </div>
+                    <table class="meal-table">
+                        <thead>
+                            <tr>
+                                <th>Food Item</th>
+                                <th class="text-right">Servings</th>
+                                <th class="text-right">Calories</th>
+                                <th class="text-right">Carbs</th>
+                                <th class="text-right">Fat</th>
+                                <th class="text-right">Protein</th>
+                                <th class="text-right">Sodium</th>
+                                <th class="text-right"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="snacks-entries">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                    <div class="meal-footer-actions">
+                        <button class="btn btn-sm btn-primary add-food-btn" data-meal="Snacks">
+                            <i class="fas fa-plus"></i> Add Food
+                        </button>
+                        <span style="font-size: 13px; color: var(--text-muted);" id="snacks-macro-subtotal"></span>
+                    </div>
+                </div>
+
+                <!-- Grand Nutrition Totals Table -->
+                <div class="totals-card">
+                    <table class="totals-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left; padding-left: 20px;">Nutrient Summary</th>
+                                <th>Calories</th>
+                                <th>Carbs (g)</th>
+                                <th>Fat (g)</th>
+                                <th>Protein (g)</th>
+                                <th>Sodium (mg)</th>
+                                <th>Sugar (g)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="row-total">
+                                <td style="text-align: left; padding-left: 20px; font-weight: 700;">Total Logged</td>
+                                <td id="total-calories">0</td>
+                                <td id="total-carbs">0</td>
+                                <td id="total-fat">0</td>
+                                <td id="total-protein">0</td>
+                                <td id="total-sodium">0</td>
+                                <td id="total-sugar">0</td>
+                            </tr>
+                            <tr class="row-goal">
+                                <td style="text-align: left; padding-left: 20px;">Daily Target</td>
+                                <td id="goal-calories">2,100</td>
+                                <td id="goal-carbs">236</td>
+                                <td id="goal-fat">58</td>
+                                <td id="goal-protein">158</td>
+                                <td id="goal-sodium">2,300</td>
+                                <td id="goal-sugar">50</td>
+                            </tr>
+                            <tr class="row-remaining">
+                                <td style="text-align: left; padding-left: 20px; font-weight: 800;">Remaining Budget</td>
+                                <td id="remaining-calories">0</td>
+                                <td id="remaining-carbs">0</td>
+                                <td id="remaining-fat">0</td>
+                                <td id="remaining-protein">0</td>
+                                <td id="remaining-sodium">0</td>
+                                <td id="remaining-sugar">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Complete Diary Action Button -->
+                <div class="text-center mb-5">
+                    <button class="btn btn-success btn-lg" id="complete-diary-btn">
+                        <i class="fas fa-check-double"></i> Complete This Day's Diary
+                    </button>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">
+                        Completing your diary records your day and calculates your 5-week projected weight trajectory.
+                    </p>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Comprehensive Add Food Modal -->
+    <div class="modal-overlay" id="add-food-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Log Food to <span id="modal-meal-name" style="color: var(--primary-blue);">Breakfast</span></h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Navigation Tabs in Modal -->
+                <div class="modal-tabs-nav">
+                    <button class="modal-tab-btn active" data-tab="search"><i class="fas fa-search"></i> Database Search</button>
+                    <button class="modal-tab-btn" data-tab="barcode"><i class="fas fa-barcode"></i> Barcode Scan</button>
+                    <button class="modal-tab-btn" data-tab="custom"><i class="fas fa-pen"></i> Quick Add Custom</button>
+                </div>
+
+                <!-- TAB 1: Database Search -->
+                <div class="modal-tab-panel active" id="tab-search">
+                    <div class="search-input-wrapper mb-3">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="modal-food-search" placeholder="Search 50+ foods (e.g. Eggs, Salmon, Avocado, Oats)..." autofocus>
+                    </div>
+                    <div class="quick-pills-row food-modal-pills mb-3">
+                        <button class="quick-pill active" data-category="all">All</button>
+                        <button class="quick-pill" data-category="breakfast">Breakfast</button>
+                        <button class="quick-pill" data-category="protein">Proteins</button>
+                        <button class="quick-pill" data-category="grains">Grains</button>
+                        <button class="quick-pill" data-category="fruits_veg">Produce</button>
+                        <button class="quick-pill" data-category="snacks">Snacks</button>
+                        <button class="quick-pill" data-category="meals">Meals</button>
+                    </div>
+                    <div class="food-results-list" id="modal-food-results">
+                        <!-- Loaded by food-diary.js -->
+                    </div>
+                </div>
+
+                <!-- TAB 2: Barcode Scanner Simulation -->
+                <div class="modal-tab-panel hidden" id="tab-barcode">
+                    <div class="barcode-scanner-box">
+                        <div class="scanner-viewfinder">
+                            <div class="scanner-laser-line"></div>
+                            <i class="fas fa-barcode" style="font-size: 64px; opacity: 0.3;"></i>
+                        </div>
+                        <p style="font-size: 14px; margin-bottom: 14px;">Point your camera at a barcode to scan automatically.</p>
+                        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+                            <button class="btn btn-sm btn-outline barcode-sample-btn" data-barcode="888849000147">
+                                Scan Quest Bar
+                            </button>
+                            <button class="btn btn-sm btn-outline barcode-sample-btn" data-barcode="894700010052">
+                                Scan Chobani Greek Yogurt
+                            </button>
+                            <button class="btn btn-sm btn-outline barcode-sample-btn" data-barcode="037466016451">
+                                Scan Lindt 70% Dark Chocolate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: Quick Add Custom -->
+                <div class="modal-tab-panel hidden" id="tab-custom">
+                    <form id="custom-food-form">
+                        <div class="mb-3">
+                            <label class="form-label" for="custom-name">Food Name</label>
+                            <input type="text" id="custom-name" class="form-control" placeholder="e.g. Grandma's Apple Pie" required>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;" class="mb-3">
+                            <div>
+                                <label class="form-label" for="custom-serving">Serving Description</label>
+                                <input type="text" id="custom-serving" class="form-control" placeholder="1 slice, 1 plate..." value="1 portion">
+                            </div>
+                            <div>
+                                <label class="form-label" for="custom-calories">Calories (kcal)</label>
+                                <input type="number" id="custom-calories" class="form-control" placeholder="350" required min="1">
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;" class="mb-3">
+                            <div>
+                                <label class="form-label" for="custom-carbs">Carbs (g)</label>
+                                <input type="number" id="custom-carbs" class="form-control" value="0" min="0">
+                            </div>
+                            <div>
+                                <label class="form-label" for="custom-protein">Protein (g)</label>
+                                <input type="number" id="custom-protein" class="form-control" value="0" min="0">
+                            </div>
+                            <div>
+                                <label class="form-label" for="custom-fat">Fat (g)</label>
+                                <input type="number" id="custom-fat" class="form-control" value="0" min="0">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Selected Food Detail Panel (Serving Multiplier & FDA Nutrition Facts) -->
+                <div id="food-detail-panel" class="hidden mt-3" style="padding-top: 16px; border-top: 1px solid var(--border);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div>
+                            <h4 id="panel-food-name" style="font-size: 16px; font-weight: 800; color: var(--navy-deep);">Selected Food</h4>
+                            <span id="panel-food-brand" style="font-size: 12px; color: var(--text-muted);">Brand Info</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <label for="servings-multiplier" style="font-size: 13px; font-weight: 700;">Servings:</label>
+                            <input type="number" id="servings-multiplier" class="form-control" value="1.0" min="0.1" max="20" step="0.25" style="width: 80px; text-align: center; height: 38px;">
+                        </div>
+                    </div>
+
+                    <!-- FDA Standard Nutrition Facts Label Preview -->
+                    <div class="nutrition-facts-label">
+                        <h4>Nutrition Facts</h4>
+                        <div class="nf-serving">Serving size: <strong id="nf-serving-size">1 serving</strong></div>
+                        <div class="nf-calories">
+                            <span>Calories</span>
+                            <span class="amount" id="nf-calories-amount">150</span>
+                        </div>
+                        <div class="nf-nutrient-row">
+                            <span><strong>Total Fat</strong> <span id="nf-fat">0g</span></span>
+                        </div>
+                        <div class="nf-nutrient-row">
+                            <span><strong>Sodium</strong> <span id="nf-sodium">0mg</span></span>
+                        </div>
+                        <div class="nf-nutrient-row">
+                            <span><strong>Total Carbohydrate</strong> <span id="nf-carbs">0g</span></span>
+                        </div>
+                        <div class="nf-nutrient-row sub">
+                            <span>Dietary Fiber <span id="nf-fiber">0g</span></span>
+                        </div>
+                        <div class="nf-nutrient-row sub">
+                            <span>Total Sugars <span id="nf-sugar">0g</span></span>
+                        </div>
+                        <div class="nf-nutrient-row">
+                            <span><strong>Protein</strong> <span id="nf-protein">0g</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close-btn">Cancel</button>
+                <button class="btn btn-primary" id="confirm-log-food-btn" disabled>
+                    <i class="fas fa-check"></i> Add to Diary
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Celebration / Projected Weight Loss Modal -->
+    <div class="modal-overlay" id="completion-modal">
+        <div class="modal" style="max-width: 500px; text-align: center;">
+            <div class="modal-body" style="padding: 36px 28px;">
+                <div style="width: 64px; height: 64px; background: #ecfdf5; color: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 18px auto;">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3 style="font-size: 22px; font-weight: 800; color: var(--navy-deep); margin-bottom: 8px;">Day Complete! 🎉</h3>
+                <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 20px;" id="completion-text">
+                    If every day were like today...
+                </p>
+                <div style="background: var(--bg-page); border-radius: var(--radius-md); padding: 16px; border: 1px solid var(--border); margin-bottom: 24px;">
+                    <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">Projected Weight in 5 Weeks:</div>
+                    <div style="font-size: 32px; font-weight: 800; color: var(--primary-blue);" id="projected-weight-display">66.8 kg</div>
+                    <div style="font-size: 12px; color: var(--success); font-weight: 600;"><i class="fas fa-arrow-down"></i> On track to hit your goal weight!</div>
+                </div>
+                <button class="btn btn-primary w-100 btn-lg modal-close-btn">Keep Crushing It</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom App Nav -->
+    <nav class="mobile-bottom-nav">
+        <div class="bottom-nav-grid">
+            <a href="dashboard.html" class="bottom-nav-item"><i class="fas fa-th-large"></i><span>Home</span></a>
+            <a href="food-diary.html" class="bottom-nav-item active"><i class="fas fa-utensils"></i><span>Diary</span></a>
+            <a href="exercise.html" class="bottom-nav-item"><i class="fas fa-running"></i><span>Exercise</span></a>
+            <a href="progress.html" class="bottom-nav-item"><i class="fas fa-chart-line"></i><span>Progress</span></a>
+            <a href="goals.html" class="bottom-nav-item"><i class="fas fa-bullseye"></i><span>Goals</span></a>
+        </div>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer" style="padding: 30px 0;">
+        <div class="container text-center">
+            <p>&copy; 2025 MyFitnessPal, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../data/food-database.js"></script>
+    <script src="../data/exercise-database.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/food-diary.js"></script>
+</body>
+</html>
