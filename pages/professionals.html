@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Coach | MyFitnessPal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .pro-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .pro-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            display: flex;
+            gap: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .pro-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-blue);
+        }
+        .pro-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-blue);
+            flex-shrink: 0;
+        }
+        .pro-specialties {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+        .specialty-tag {
+            background: var(--bg-muted);
+            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: var(--radius-full);
+        }
+        .time-slots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 14px;
+        }
+        .slot-btn {
+            background: var(--bg-page);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .slot-btn:hover, .slot-btn.selected {
+            background: var(--primary-subtle);
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <span class="logo-mark"><i class="fas fa-heartbeat"></i></span>
+                    myfitnesspal
+                </a>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <!-- Injected by auth.js -->
+            </ul>
+            <div class="auth-buttons">
+                <!-- Injected by auth.js -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <section class="dashboard">
+        <div class="container dashboard-grid">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                    <li><a href="food-diary.html"><i class="fas fa-utensils"></i> Food Diary</a></li>
+                    <li><a href="exercise.html"><i class="fas fa-running"></i> Exercise Diary</a></li>
+                    <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress & Weight</a></li>
+                    <li><a href="goals.html"><i class="fas fa-bullseye"></i> Nutrition Goals</a></li>
+                    <li><a href="professionals.html" class="active"><i class="fas fa-user-tie"></i> Book a Coach</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li id="premium-sidebar-link"><a href="premium.html" style="color: #d97706;"><i class="fas fa-crown"></i> Premium</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="diary-date-nav">
+                    <div>
+                        <h1 style="font-size: 26px; font-weight: 800; color: var(--navy-deep); margin-bottom: 4px;">Verified Coaches & Dietitians</h1>
+                        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 0;">Get 1-on-1 personalized guidance from certified health professionals.</p>
+                    </div>
+                </div>
+
+                <!-- Filter Pills -->
+                <div class="quick-pills-row mb-4">
+                    <button class="quick-pill active filter-btn" data-filter="all">All Professionals</button>
+                    <button class="quick-pill filter-btn" data-filter="trainer">Certified Trainers</button>
+                    <button class="quick-pill filter-btn" data-filter="chef">Dietitians & Nutritionists</button>
+                </div>
+
+                <!-- Professionals Grid -->
+                <div class="pro-grid" id="professionals-grid">
+                    <!-- Populated by professionals.js -->
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div class="modal-overlay" id="booking-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Book Session with <span id="booking-pro-name" style="color: var(--primary-blue);">Coach</span></h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">
+                    Select an available 45-minute virtual consultation slot:
+                </p>
+                <div class="time-slots-grid" id="time-slots-list">
+                    <!-- Slots -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close-btn">Cancel</button>
+                <button class="btn btn-primary" id="confirm-booking-btn" disabled>
+                    <i class="fas fa-calendar-check"></i> Confirm Reservation
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom App Nav -->
+    <nav class="mobile-bottom-nav">
+        <div class="bottom-nav-grid">
+            <a href="dashboard.html" class="bottom-nav-item"><i class="fas fa-th-large"></i><span>Home</span></a>
+            <a href="food-diary.html" class="bottom-nav-item"><i class="fas fa-utensils"></i><span>Diary</span></a>
+            <a href="exercise.html" class="bottom-nav-item"><i class="fas fa-running"></i><span>Exercise</span></a>
+            <a href="progress.html" class="bottom-nav-item"><i class="fas fa-chart-line"></i><span>Progress</span></a>
+            <a href="goals.html" class="bottom-nav-item"><i class="fas fa-bullseye"></i><span>Goals</span></a>
+        </div>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer" style="padding: 30px 0;">
+        <div class="container text-center">
+            <p>&copy; 2025 MyFitnessPal, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../data/food-database.js"></script>
+    <script src="../data/exercise-database.js"></script>
+    <script src="../data/professionals-database.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/professionals.js"></script>
+</body>
+</html>
