@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyFitnessPal | Nutrition Tracking for Real Life</title>
+    <meta name="description" content="Track calories, breakdown ingredients, and log activities with MyFitnessPal. The #1 nutrition tracking app for real life.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-mark"><i class="fas fa-heartbeat"></i></span>
+                    myfitnesspal
+                </a>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#food-database">Food Search</a></li>
+                <li><a href="#calculator">Calorie Tool</a></li>
+                <li><a href="pages/premium.html" class="premium-nav-link"><i class="fas fa-crown"></i> Premium</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-demo-pill btn-demo-action" title="Recruiter 1-Click Test Drive">
+                    <i class="fas fa-rocket"></i> Demo Drive
+                </button>
+                <a href="pages/login.html" class="btn btn-secondary">Log In</a>
+                <a href="pages/signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge-pill">
+                    <i class="fas fa-sparkles"></i> Rated #1 Calorie & Macro Tracker
+                </div>
+                <h1>Nutrition tracking for <span class="gradient-text">real life</span></h1>
+                <p>Make sustainable progress with the all-in-one food, exercise, and calorie tracker. Log meals in seconds, optimize your macros, and achieve your health goals.</p>
+                <div class="hero-cta-group">
+                    <a href="pages/signup.html" class="btn btn-primary btn-lg">
+                        Start Today <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <button class="btn btn-demo-pill btn-lg btn-demo-action">
+                        <i class="fas fa-bolt"></i> 1-Click Demo Drive
+                    </button>
+                </div>
+                <div class="hero-stats-row">
+                    <div class="hero-stat">
+                        <h4>200M+</h4>
+                        <p>Global Members</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h4>14M+</h4>
+                        <p>Verified Foods</p>
+                    </div>
+                    <div class="hero-stat">
+                        <h4>3.5M+</h4>
+                        <p>5-Star Reviews</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phone Mockup Showcase -->
+            <div class="hero-image-wrap">
+                <div class="phone-mockup">
+                    <div class="floating-streak-badge">
+                        <i class="fas fa-fire"></i>
+                        <span>14-Day Streak Active!</span>
+                    </div>
+                    <div class="phone-screen">
+                        <div class="phone-notch">
+                            <span>9:41</span>
+                            <span><i class="fas fa-signal"></i> <i class="fas fa-wifi"></i> <i class="fas fa-battery-full"></i></span>
+                        </div>
+                        <div class="mockup-header-title">
+                            <span>Today</span>
+                            <span style="font-size: 13px; color: var(--primary-blue);"><i class="fas fa-calendar-alt"></i></span>
+                        </div>
+
+                        <!-- Calorie Summary -->
+                        <div class="mockup-cal-card">
+                            <div class="mockup-cal-head">
+                                <span>Calories Remaining</span>
+                                <span style="color: var(--primary-blue);">860 kcal</span>
+                            </div>
+                            <div class="mockup-cal-number">
+                                1,240 <span>/ 2,100 goal</span>
+                            </div>
+                            <div class="mockup-progress">
+                                <div class="mockup-progress-fill"></div>
+                            </div>
+                            <div class="mockup-macros">
+                                <div class="mockup-macro-pill carbs">
+                                    <span>Carbs</span>
+                                    <div>135g / 236g</div>
+                                </div>
+                                <div class="mockup-macro-pill protein">
+                                    <span>Protein</span>
+                                    <div>104g / 158g</div>
+                                </div>
+                                <div class="mockup-macro-pill fat">
+                                    <span>Fat</span>
+                                    <div>42g / 58g</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Diary Preview Items -->
+                        <div class="mockup-diary-item">
+                            <div>
+                                <strong>Breakfast</strong>
+                                <span>Scrambled Eggs & Avocado Toast</span>
+                            </div>
+                            <div style="font-weight: 700; color: var(--navy-deep);">442 kcal</div>
+                        </div>
+                        <div class="mockup-diary-item">
+                            <div>
+                                <strong>Lunch</strong>
+                                <span>Grilled Chicken Quinoa Bowl</span>
+                            </div>
+                            <div style="font-weight: 700; color: var(--navy-deep);">581 kcal</div>
+                        </div>
+                        <div class="mockup-diary-item" style="border-left: 3px solid var(--success);">
+                            <div>
+                                <strong>Exercise</strong>
+                                <span>Morning Run (30 min)</span>
+                            </div>
+                            <div style="font-weight: 700; color: var(--success);">-345 kcal</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ratings Section -->
+    <section class="ratings">
+        <div class="container">
+            <div class="ratings-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <h2>3.5 Million 5-Star Ratings Worldwide</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p>"Helped me get moving on my goals and tracking my weight loss and bodybuilding progress. The barcode scanner is unmatched."</p>
+                    <p class="testimonial-author">— Jason L. (Lost 28 lbs)</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Good for tracking calories and macros with an enormous verified database of foods. Makes meal prepping simple."</p>
+                    <p class="testimonial-author">— Iain M. (Marathon Runner)</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Friendly, easy-to-use app that keeps me accountable every single day. The streak tracker keeps me going."</p>
+                    <p class="testimonial-author">— Dinah L. (Maintain for 3 years)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section (1-2-3 Steps) -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hit your health goals in 1-2-3</h2>
+                <p>Everything you need to take control of your nutrition and fitness journey.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-number">1</div>
+                    <h3>Track calories, macros & more</h3>
+                    <p>Log your meals in seconds with our verified food database, barcode scanner, and custom recipe builder.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-number">2</div>
+                    <h3>Follow your progress</h3>
+                    <p>Forget perfection. Building sustainable daily habits and seeing visual trendlines keeps you motivated.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-number">3</div>
+                    <h3>Eat better and hit your goals</h3>
+                    <p>Learn which foods fuel your body best, customize your macro targets, and celebrate milestones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Food Database Live Search Section -->
+    <section class="food-database-section" id="food-database">
+        <div class="container">
+            <div class="section-title">
+                <h2>If it's edible, it's in here</h2>
+                <p>Search over 14 million global foods with complete macronutrients and calories.</p>
+            </div>
+            <div class="food-search-widget">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="landing-food-search" placeholder="Try searching 'Salmon', 'Oatmeal', 'Chicken Breast', 'Avocado'..." value="Chicken Breast">
+                </div>
+                <div class="food-filter-pills quick-pills-row">
+                    <button class="quick-pill active" data-category="all">All Items</button>
+                    <button class="quick-pill" data-category="breakfast">Breakfast</button>
+                    <button class="quick-pill" data-category="protein">Proteins</button>
+                    <button class="quick-pill" data-category="grains">Grains & Carbs</button>
+                    <button class="quick-pill" data-category="fruits_veg">Fruits & Veg</button>
+                    <button class="quick-pill" data-category="snacks">Snacks</button>
+                    <button class="quick-pill" data-category="meals">Meals</button>
+                </div>
+                <div class="live-results-grid" id="landing-results-grid">
+                    <!-- Populated by app.js -->
+                </div>
+                <div class="text-center mt-4">
+                    <a href="pages/signup.html" class="btn btn-primary">Log Food in Diary <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Calorie & BMI Goal Calculator Widget -->
+    <section class="calculator-section" id="calculator">
+        <div class="container">
+            <div class="section-title">
+                <h2>Calculate Your Daily Calorie Target</h2>
+                <p>Find out exactly how many calories and macros your body needs to reach your goal.</p>
+            </div>
+            <div class="calc-grid">
+                <div class="calc-inputs">
+                    <div class="calc-form-group">
+                        <div>
+                            <label class="form-label" for="calc-gender">Biological Sex</label>
+                            <select id="calc-gender" class="form-control">
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label" for="calc-age">Age</label>
+                            <input type="number" id="calc-age" class="form-control" value="28" min="15" max="100">
+                        </div>
+                    </div>
+                    <div class="calc-form-group">
+                        <div>
+                            <label class="form-label" for="calc-height">Height (cm)</label>
+                            <input type="number" id="calc-height" class="form-control" value="168" min="100" max="230">
+                        </div>
+                        <div>
+                            <label class="form-label" for="calc-weight">Current Weight (kg)</label>
+                            <input type="number" id="calc-weight" class="form-control" value="68" min="30" max="250">
+                        </div>
+                    </div>
+                    <div class="calc-form-group">
+                        <div>
+                            <label class="form-label" for="calc-activity">Activity Level</label>
+                            <select id="calc-activity" class="form-control">
+                                <option value="1.2">Sedentary (Desk job, little exercise)</option>
+                                <option value="1.4" selected>Moderate (3-4 workouts/week)</option>
+                                <option value="1.7">Active (5-6 intense workouts/week)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label" for="calc-goal">Primary Goal</label>
+                            <select id="calc-goal" class="form-control">
+                                <option value="lose" selected>Fat Loss (-0.5 kg / week)</option>
+                                <option value="maintain">Maintain Weight</option>
+                                <option value="gain">Lean Muscle Gain (+0.25 kg / week)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary w-100 mt-2" id="calc-calculate-btn">
+                        <i class="fas fa-calculator"></i> Calculate My Target
+                    </button>
+                </div>
+
+                <div class="calc-result-box">
+                    <h4>Recommended Daily Target</h4>
+                    <div class="calc-calories-num" id="calc-result-cals">1,820</div>
+                    <div class="calc-calories-unit">Calories per day</div>
+                    <div class="calc-macros-row">
+                        <div class="calc-macro-col">
+                            <strong id="calc-result-carbs">205g</strong>
+                            <span>Carbs (45%)</span>
+                        </div>
+                        <div class="calc-macro-col">
+                            <strong id="calc-result-protein">137g</strong>
+                            <span>Protein (30%)</span>
+                        </div>
+                        <div class="calc-macro-col">
+                            <strong id="calc-result-fat">51g</strong>
+                            <span>Fat (25%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="success-stories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nutrition tracking works, here's the proof</h2>
+                <p>Real members who transformed their health and confidence with MyFitnessPal.</p>
+            </div>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80" alt="Tamiko G.">
+                        <span class="story-badge">-48 lbs Lost</span>
+                    </div>
+                    <div class="story-content">
+                        <p>"I love the accountability. When I look at my progress photos and compare where I started, people are astonished. That's such an awesome feeling!"</p>
+                        <p class="story-author">— Tamiko G., Member for 2 Years</p>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <div class="story-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80" alt="Larry S.">
+                        <span class="story-badge">-108 lbs Lost</span>
+                    </div>
+                    <div class="story-content">
+                        <p>"I was 307 lbs and today I am 199 lbs. Learning how proper nutrition and exercise work together changed my life. I still use MyFitnessPal every day."</p>
+                        <p class="story-author">— Larry S., Member for 4 Years</p>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <div class="story-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80" alt="Brooke N.">
+                        <span class="story-badge">+14 lbs Muscle Gained</span>
+                    </div>
+                    <div class="story-content">
+                        <p>"Once I started focusing on feeding my body proper protein and fuel for strength training, everything changed. I feel confident and empowered."</p>
+                        <p class="story-author">— Brooke N., Strength Athlete</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="pages/signup.html" class="btn btn-primary btn-lg">Join Free Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works / Philosophy -->
+    <section class="features" style="background: var(--bg-page);" id="how-it-works">
+        <div class="container">
+            <div class="card" style="padding: 40px; border-left: 5px solid var(--primary-blue);">
+                <h3 style="font-size: 22px; font-weight: 800; color: var(--navy-deep); margin-bottom: 14px;">Knowledge is power</h3>
+                <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                    "Studies show people who keep an accurate food diary are 2.5x more likely to hit and maintain their health goals. MyFitnessPal simplifies nutrition and calorie tracking, provides the data you want, and helps you make sense of it all. Healthy eating is a continuous journey of self-discovery—and the more you track, the more empowered you become."
+                </p>
+                <p style="font-weight: 700; color: var(--primary-blue);">— Stephanie Nelson, MS, RD, Registered Dietitian</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about MyFitnessPal.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <h3>Is MyFitnessPal free to use?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, MyFitnessPal offers an extensive free version with complete food logging, exercise tracking, weight progress, and access to the 14+ million food database. We also offer a Premium subscription with advanced nutrient analytics and custom macro breakdowns.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How does MyFitnessPal calculate my calorie and macro goals?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We use the validated Mifflin-St Jeor equation to compute your Basal Metabolic Rate (BMR) from your age, height, weight, and biological sex, adjusted by your daily activity level and desired weekly pace of change.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What nutrition data can I track besides calories?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can track carbohydrates, protein, fat, fiber, sodium, sugar, water intake, and exercise energy expenditure across every meal of the day.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I test this project immediately as a portfolio demo?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Click the <strong>1-Click Demo Drive</strong> button in the top navigation or hero banner to instantly experience an active account with 14 days of history, meal logs, and interactive charts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- From Our Experts Blog -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>From Our Nutrition Experts</h2>
+                <p>Science-backed guidance for your health journey.</p>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80" alt="Healthy Food Bowl">
+                    <div class="blog-content">
+                        <span class="blog-pill">Nutrition Guide</span>
+                        <h3>The Essential Guide to Mindful Food Logging</h3>
+                        <p>Keeping an accurate food journal helps identify hidden calories and builds awareness without restrictive diets.</p>
+                        <a href="#" class="blog-link">Read Full Guide <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80" alt="Salad and Veggies">
+                    <div class="blog-content">
+                        <span class="blog-pill">Meal Prep</span>
+                        <h3>How to Balance Your Daily Macronutrients</h3>
+                        <p>Optimize your carbs, protein, and healthy fats for athletic performance, steady energy, and sustainable fat loss.</p>
+                        <a href="#" class="blog-link">Read Full Guide <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <a href="index.html" style="color: var(--white);">
+                            <span class="logo-mark"><i class="fas fa-heartbeat"></i></span>
+                            myfitnesspal
+                        </a>
+                    </div>
+                    <p>The world's leading nutrition and fitness tracking platform, empowering over 200 million people to live healthier, happier lives.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#food-database">Food Database</a></li>
+                        <li><a href="#calculator">Calorie Calculator</a></li>
+                        <li><a href="pages/premium.html">Premium Membership</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Community</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Member Stories</a></li>
+                        <li><a href="#">Expert Advice</a></li>
+                        <li><a href="pages/professionals.html">Find a Coach</a></li>
+                        <li><a href="#">Support Forums</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company & Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MyFitnessPal, Inc. All rights reserved. Portfolio recreation for demonstration.</p>
+                <div style="display: flex; gap: 16px; font-size: 16px;">
+                    <a href="#" style="color: #94a3b8;"><i class="fab fa-apple"></i></a>
+                    <a href="#" style="color: #94a3b8;"><i class="fab fa-google-play"></i></a>
+                    <a href="#" style="color: #94a3b8;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: #94a3b8;"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="data/food-database.js"></script>
+    <script src="data/exercise-database.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
