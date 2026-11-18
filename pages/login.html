@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Login | MyFitnessPal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .auth-card-wrap {
+            max-width: 460px;
+            margin: 60px auto;
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border);
+            padding: 38px;
+            box-shadow: var(--shadow-lg);
+        }
+        .demo-test-card {
+            background: linear-gradient(135deg, #fff7ed, #ffedd5);
+            border: 1px solid #fed7aa;
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .demo-test-card h4 {
+            font-size: 14px;
+            font-weight: 800;
+            color: #9a3412;
+            margin-bottom: 4px;
+        }
+        .demo-test-card p {
+            font-size: 12px;
+            color: #c2410c;
+            margin-bottom: 12px;
+        }
+        .form-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 20px 0;
+            color: var(--text-light);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .form-divider::before, .form-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border);
+        }
+        .form-divider span {
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <span class="logo-mark"><i class="fas fa-heartbeat"></i></span>
+                    myfitnesspal
+                </a>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html#features">Features</a></li>
+                <li><a href="../index.html#food-database">Food Search</a></li>
+                <li><a href="premium.html"><i class="fas fa-crown"></i> Premium</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-secondary active">Log In</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Auth Form -->
+    <main style="flex: 1; display: flex; align-items: center;">
+        <div class="container">
+            <div class="auth-card-wrap">
+                <div class="text-center mb-4">
+                    <h1 style="font-size: 26px; font-weight: 800; color: var(--navy-deep); margin-bottom: 6px;">Member Log In</h1>
+                    <p style="font-size: 14px; color: var(--text-muted);">Welcome back! Please enter your details.</p>
+                </div>
+
+                <!-- 1-Click Recruiter Demo Button -->
+                <div class="demo-test-card">
+                    <h4><i class="fas fa-rocket"></i> Recruiter / Reviewer Fast-Track</h4>
+                    <p>Instant access to an active demo account with 14-day streak, full meals, and weight loss charts.</p>
+                    <button class="btn btn-demo-pill w-100 btn-demo-action" id="demo-login-btn">
+                        <i class="fas fa-bolt"></i> 1-Click Demo Login
+                    </button>
+                    <div style="font-size: 11px; color: #9a3412; margin-top: 6px;">
+                        Credentials: <code>demo@myfitnesspal.com</code> • <code>password123</code>
+                    </div>
+                </div>
+
+                <div class="form-divider">
+                    <span>Or Log In with Email</span>
+                </div>
+
+                <form id="login-form">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Username or Email</label>
+                        <input type="text" id="email" class="form-control" placeholder="name@example.com" value="demo@myfitnesspal.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <label for="password" class="form-label" style="margin-bottom: 0;">Password</label>
+                            <a href="#" style="font-size: 12px; font-weight: 600;">Forgot password?</a>
+                        </div>
+                        <input type="password" id="password" class="form-control" placeholder="••••••••" value="password123" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 btn-lg mb-3">
+                        Log In <i class="fas fa-sign-in-alt"></i>
+                    </button>
+                    <div id="login-error" class="hidden" style="padding: 10px; background: #fee2e2; border: 1px solid #f87171; border-radius: var(--radius-sm); color: var(--danger); font-size: 13px; margin-top: 10px; text-align: center;"></div>
+                </form>
+
+                <div class="text-center mt-4" style="font-size: 14px; color: var(--text-muted);">
+                    Don't have an account? <a href="signup.html" style="font-weight: 700;">Sign Up Free</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="padding: 30px 0;">
+        <div class="container text-center">
+            <p>&copy; 2025 MyFitnessPal, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../data/food-database.js"></script>
+    <script src="../data/exercise-database.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        document.getElementById('demo-login-btn')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            auth.loginDemoUser();
+        });
+        document.getElementById('login-form')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const pass = document.getElementById('password').value;
+            const errDiv = document.getElementById('login-error');
+            if (auth.login(email, pass)) {
+                window.location.href = 'dashboard.html';
+            } else {
+                errDiv.textContent = 'Invalid email/username or password.';
+                errDiv.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
