@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | MyFitnessPal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <span class="logo-mark"><i class="fas fa-heartbeat"></i></span>
+                    myfitnesspal
+                </a>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <!-- Injected by auth.js -->
+            </ul>
+            <div class="auth-buttons">
+                <!-- Injected by auth.js -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <section class="dashboard">
+        <div class="container dashboard-grid">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <div class="sidebar-user-brief">
+                    <img id="sidebar-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" alt="Profile">
+                    <div>
+                        <h4 id="sidebar-name">User</h4>
+                        <span id="sidebar-status"><i class="fas fa-check-circle text-success"></i> Active Plan</span>
+                    </div>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="dashboard.html" class="active"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                    <li><a href="food-diary.html"><i class="fas fa-utensils"></i> Food Diary</a></li>
+                    <li><a href="exercise.html"><i class="fas fa-running"></i> Exercise Diary</a></li>
+                    <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress & Weight</a></li>
+                    <li><a href="goals.html"><i class="fas fa-bullseye"></i> Nutrition Goals</a></li>
+                    <li><a href="professionals.html"><i class="fas fa-user-tie"></i> Book a Coach</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li id="premium-sidebar-link"><a href="premium.html" style="color: #d97706;"><i class="fas fa-crown"></i> Premium</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <!-- Streak Encouragement Banner -->
+                <div class="streak-banner">
+                    <div class="streak-banner-content">
+                        <div class="streak-flame-circle">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="streak-text">
+                            <h4><span id="streak-days-count">14</span>-Day Logging Streak! 🔥</h4>
+                            <p>You're 3.2x more likely to hit your health goal by staying consistent every day.</p>
+                        </div>
+                    </div>
+                    <a href="food-diary.html" class="btn btn-sm btn-primary">Log Today's Meals</a>
+                </div>
+
+                <!-- Calorie Equation Hero Card -->
+                <div class="calorie-equation-card">
+                    <div class="equation-header">
+                        <h2>Calories Remaining</h2>
+                        <span class="equation-date-badge" id="today-date-badge"><i class="far fa-calendar"></i> Today</span>
+                    </div>
+                    <div class="equation-grid">
+                        <div class="equation-block">
+                            <h4>Daily Goal</h4>
+                            <div class="equation-value" id="calorie-goal">2,100</div>
+                        </div>
+                        <div class="equation-symbol">-</div>
+                        <div class="equation-block">
+                            <h4>Food</h4>
+                            <div class="equation-value" id="calories-consumed" style="color: var(--navy-deep);">0</div>
+                        </div>
+                        <div class="equation-symbol">+</div>
+                        <div class="equation-block">
+                            <h4>Exercise</h4>
+                            <div class="equation-value" id="calories-burned" style="color: var(--success);">0</div>
+                        </div>
+                        <div class="equation-symbol">=</div>
+                        <div class="equation-block">
+                            <h4>Remaining</h4>
+                            <div class="equation-value remaining" id="calories-remaining">0</div>
+                        </div>
+                    </div>
+                    <div class="calorie-progress-wrapper">
+                        <div class="progress-labels">
+                            <span>Consumed vs Goal</span>
+                            <span id="calorie-percent-text">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="calorie-progress" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Macronutrients Breakdown Card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="card-title"><i class="fas fa-chart-pie" style="color: var(--primary-blue);"></i> Macronutrient Breakdown</h2>
+                        <a href="goals.html" style="font-size: 13px; font-weight: 600;">Edit Targets ›</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="macros-dashboard-grid">
+                            <div class="macro-chart-container">
+                                <canvas id="macro-chart"></canvas>
+                                <div class="macro-chart-center-label">
+                                    <strong id="macro-center-cals">0</strong>
+                                    <span>kcal</span>
+                                </div>
+                            </div>
+                            <div class="macros-bars-list">
+                                <!-- Carbs -->
+                                <div class="macro-bar-item">
+                                    <div class="macro-bar-header">
+                                        <div class="macro-name-tag">
+                                            <span class="macro-dot carbs"></span>
+                                            <span>Carbohydrates (<span id="carbs-goal-pct">45%</span>)</span>
+                                        </div>
+                                        <div class="macro-stat-values">
+                                            <span id="carbs-consumed">0</span>g / <span id="carbs-goal">236</span>g
+                                        </div>
+                                    </div>
+                                    <div class="macro-progress-bar">
+                                        <div class="macro-progress-fill carbs" id="carbs-progress" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Protein -->
+                                <div class="macro-bar-item">
+                                    <div class="macro-bar-header">
+                                        <div class="macro-name-tag">
+                                            <span class="macro-dot protein"></span>
+                                            <span>Protein (<span id="protein-goal-pct">30%</span>)</span>
+                                        </div>
+                                        <div class="macro-stat-values">
+                                            <span id="protein-consumed">0</span>g / <span id="protein-goal">158</span>g
+                                        </div>
+                                    </div>
+                                    <div class="macro-progress-bar">
+                                        <div class="macro-progress-fill protein" id="protein-progress" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Fat -->
+                                <div class="macro-bar-item">
+                                    <div class="macro-bar-header">
+                                        <div class="macro-name-tag">
+                                            <span class="macro-dot fat"></span>
+                                            <span>Fat (<span id="fat-goal-pct">25%</span>)</span>
+                                        </div>
+                                        <div class="macro-stat-values">
+                                            <span id="fat-consumed">0</span>g / <span id="fat-goal">58</span>g
+                                        </div>
+                                    </div>
+                                    <div class="macro-progress-bar">
+                                        <div class="macro-progress-fill fat" id="fat-progress" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Strip -->
+                <div class="quick-actions-strip">
+                    <a href="food-diary.html" class="action-card-btn">
+                        <div class="action-icon-circle food">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="action-btn-texts">
+                            <strong>Log Meal</strong>
+                            <span>Breakfast, Lunch...</span>
+                        </div>
+                    </a>
+                    <a href="exercise.html" class="action-card-btn">
+                        <div class="action-icon-circle exercise">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="action-btn-texts">
+                            <strong>Log Workout</strong>
+                            <span>Cardio or Strength</span>
+                        </div>
+                    </a>
+                    <button class="action-card-btn" id="open-weight-modal-btn">
+                        <div class="action-icon-circle weight">
+                            <i class="fas fa-weight"></i>
+                        </div>
+                        <div class="action-btn-texts">
+                            <strong>Track Weight</strong>
+                            <span id="current-weight-badge">68.2 kg</span>
+                        </div>
+                    </button>
+                    <button class="action-card-btn" id="quick-add-water-btn">
+                        <div class="action-icon-circle water">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="action-btn-texts">
+                            <strong>Add Water</strong>
+                            <span>+250 ml (1 glass)</span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Interactive Water Tracker Widget -->
+                <div class="card water-tracker-card mb-4">
+                    <div class="card-header" style="background: transparent;">
+                        <h2 class="card-title" style="color: #0369a1;"><i class="fas fa-tint"></i> Daily Water Intake</h2>
+                        <div class="water-total-count">
+                            <span id="water-glasses-count">6</span> of 8 glasses (<span id="water-ml-count">1,500</span> ml)
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 13px; color: #0284c7; margin-bottom: 6px;">Tap any glass to log or remove water:</p>
+                        <div class="water-glasses-row" id="water-glasses-container">
+                            <!-- 8 clickable water glass icons rendered by dashboard.js -->
+                        </div>
+                        <div class="water-controls">
+                            <button class="btn btn-sm btn-secondary" id="water-minus-btn"><i class="fas fa-minus"></i> 250 ml</button>
+                            <span style="font-size: 13px; color: #0369a1; font-weight: 600;">Goal: 64 oz / 2,000 ml</span>
+                            <button class="btn btn-sm btn-primary" id="water-plus-btn"><i class="fas fa-plus"></i> 250 ml</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Meals & Exercises Grid -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                    <!-- Recent Food Entries -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title"><i class="fas fa-utensils"></i> Today's Meals</h2>
+                            <a href="food-diary.html" style="font-size: 13px; font-weight: 600;">View Diary ›</a>
+                        </div>
+                        <div class="card-body" id="recent-food-entries" style="max-height: 280px; overflow-y: auto;">
+                            <!-- Populated by dashboard.js -->
+                        </div>
+                    </div>
+
+                    <!-- Recent Exercise Entries -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title"><i class="fas fa-fire" style="color: var(--success);"></i> Workouts</h2>
+                            <a href="exercise.html" style="font-size: 13px; font-weight: 600;">View All ›</a>
+                        </div>
+                        <div class="card-body" id="recent-exercise-entries" style="max-height: 280px; overflow-y: auto;">
+                            <!-- Populated by dashboard.js -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Add Weight Modal -->
+    <div class="modal-overlay" id="add-weight-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Log Today's Weight</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="add-weight-form">
+                    <div class="mb-3">
+                        <label for="weight-input" class="form-label">Weight (kg)</label>
+                        <input type="number" id="weight-input" class="form-control" step="0.1" value="68.2" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="weight-notes" class="form-label">Notes (optional)</label>
+                        <input type="text" id="weight-notes" class="form-control" placeholder="Morning weigh-in, post-workout, etc.">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 btn-lg">Save Entry</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom App Nav -->
+    <nav class="mobile-bottom-nav">
+        <div class="bottom-nav-grid">
+            <a href="dashboard.html" class="bottom-nav-item active"><i class="fas fa-th-large"></i><span>Home</span></a>
+            <a href="food-diary.html" class="bottom-nav-item"><i class="fas fa-utensils"></i><span>Diary</span></a>
+            <a href="exercise.html" class="bottom-nav-item"><i class="fas fa-running"></i><span>Exercise</span></a>
+            <a href="progress.html" class="bottom-nav-item"><i class="fas fa-chart-line"></i><span>Progress</span></a>
+            <a href="goals.html" class="bottom-nav-item"><i class="fas fa-bullseye"></i><span>Goals</span></a>
+        </div>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer" style="padding: 30px 0;">
+        <div class="container text-center">
+            <p>&copy; 2025 MyFitnessPal, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../data/food-database.js"></script>
+    <script src="../data/exercise-database.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
