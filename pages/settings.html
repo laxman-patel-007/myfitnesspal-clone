@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings | MyFitnessPal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .settings-tab-btn {
+            background: transparent;
+            border: none;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+        }
+        .settings-tab-btn:hover {
+            color: var(--navy-deep);
+        }
+        .settings-tab-btn.active {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+        }
+        .settings-panel {
+            display: none;
+        }
+        .settings-panel.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <span class="logo-mark"><i class="fas fa-heartbeat"></i></span>
+                    myfitnesspal
+                </a>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <!-- Injected by auth.js -->
+            </ul>
+            <div class="auth-buttons">
+                <!-- Injected by auth.js -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Settings View -->
+    <section class="dashboard">
+        <div class="container dashboard-grid">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                    <li><a href="food-diary.html"><i class="fas fa-utensils"></i> Food Diary</a></li>
+                    <li><a href="exercise.html"><i class="fas fa-running"></i> Exercise Diary</a></li>
+                    <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress & Weight</a></li>
+                    <li><a href="goals.html"><i class="fas fa-bullseye"></i> Nutrition Goals</a></li>
+                    <li><a href="professionals.html"><i class="fas fa-user-tie"></i> Book a Coach</a></li>
+                    <li><a href="settings.html" class="active"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li id="premium-sidebar-link"><a href="premium.html" style="color: #d97706;"><i class="fas fa-crown"></i> Premium</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <div class="diary-date-nav">
+                    <h1 style="font-size: 26px; font-weight: 800; color: var(--navy-deep);">Account & Preferences</h1>
+                </div>
+
+                <!-- Settings Tab Bar -->
+                <div style="display: flex; gap: 8px; border-bottom: 1px solid var(--border); margin-bottom: 24px;">
+                    <button class="settings-tab-btn active" data-tab="profile">Personal Profile</button>
+                    <button class="settings-tab-btn" data-tab="account">Account & Plan</button>
+                    <button class="settings-tab-btn" data-tab="data">Data Management</button>
+                </div>
+
+                <!-- TAB 1: Profile -->
+                <div class="settings-panel active" id="panel-profile">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h2 class="card-title"><i class="fas fa-user"></i> Profile Information</h2>
+                        </div>
+                        <div class="card-body">
+                            <form id="profile-form">
+                                <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 24px;">
+                                    <img id="profile-avatar-preview" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80" alt="Avatar" style="width: 76px; height: 76px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-blue);">
+                                    <div style="flex: 1;">
+                                        <label for="avatar-url-input" class="form-label">Avatar Image URL</label>
+                                        <input type="url" id="avatar-url-input" class="form-control" placeholder="https://..." value="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="display-name" class="form-label">Display Name</label>
+                                    <input type="text" id="display-name" class="form-control" required>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;" class="mb-3">
+                                    <div>
+                                        <label for="gender" class="form-label">Biological Sex</label>
+                                        <select id="gender" class="form-control">
+                                            <option value="female">Female</option>
+                                            <option value="male">Male</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="height" class="form-label">Height (cm)</label>
+                                        <input type="number" id="height" class="form-control" step="0.5">
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="activity-level" class="form-label">Daily Activity Level</label>
+                                    <select id="activity-level" class="form-control">
+                                        <option value="sedentary">Sedentary (desk job, little exercise)</option>
+                                        <option value="light">Lightly Active (light exercise 1-3 days/week)</option>
+                                        <option value="moderate" selected>Moderately Active (moderate exercise 3-5 days/week)</option>
+                                        <option value="active">Very Active (hard exercise 6-7 days/week)</option>
+                                    </select>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Save Profile Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: Account & Subscription -->
+                <div class="settings-panel" id="panel-account">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h2 class="card-title"><i class="fas fa-envelope"></i> Account Credentials</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" id="email" class="form-control" readonly style="background: var(--bg-page);">
+                            </div>
+                            <div class="form-text" style="font-size: 13px; color: var(--text-muted);">
+                                Your email is used for login and daily digest notifications.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h2 class="card-title"><i class="fas fa-crown" style="color: #f59e0b;"></i> Subscription & Membership</h2>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-size: 18px; font-weight: 800; color: var(--navy-deep); margin-bottom: 4px;">
+                                        Plan Tier: <span id="current-plan" style="color: var(--primary-blue);">Premium</span>
+                                    </div>
+                                    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 0;">
+                                        Status: <span style="color: var(--success); font-weight: 700;">Active</span> • Renews automatically
+                                    </p>
+                                </div>
+                                <a href="premium.html" class="btn btn-secondary btn-sm">Manage Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: Data Management -->
+                <div class="settings-panel" id="panel-data">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h2 class="card-title"><i class="fas fa-file-export"></i> Export Your Health Data</h2>
+                        </div>
+                        <div class="card-body">
+                            <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">
+                                Download your complete history of meals, workouts, weight log, and macro targets in standard JSON format.
+                            </p>
+                            <button id="export-all" class="btn btn-secondary">
+                                <i class="fas fa-download"></i> Export JSON Archive
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4" style="border-color: #fed7aa; background: #fffaf5;">
+                        <div class="card-header" style="background: transparent;">
+                            <h2 class="card-title" style="color: #9a3412;"><i class="fas fa-magic"></i> Portfolio Reviewer Tool: Restore Sample Demo Data</h2>
+                        </div>
+                        <div class="card-body">
+                            <p style="font-size: 14px; color: #7c2d12; margin-bottom: 16px;">
+                                Tested deleting entries or changing numbers? Click below to instantly reseed Sarah Jenkins' full 14-day streak, weight trendline, and complete daily meals!
+                            </p>
+                            <button id="reseed-demo-btn" class="btn btn-demo-pill">
+                                <i class="fas fa-redo"></i> Restore Sarah Jenkins Demo Data
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card" style="border-color: #fecaca; background: #fff5f5;">
+                        <div class="card-header" style="background: transparent;">
+                            <h2 class="card-title" style="color: var(--danger);"><i class="fas fa-exclamation-triangle"></i> Reset All Data</h2>
+                        </div>
+                        <div class="card-body">
+                            <p style="font-size: 14px; color: #991b1b; margin-bottom: 16px;">
+                                Permanently wipe all logged food, workouts, and weight logs.
+                            </p>
+                            <button id="reset-data-btn" class="btn btn-danger">
+                                <i class="fas fa-trash-alt"></i> Clear All Health Logs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Mobile Bottom App Nav -->
+    <nav class="mobile-bottom-nav">
+        <div class="bottom-nav-grid">
+            <a href="dashboard.html" class="bottom-nav-item"><i class="fas fa-th-large"></i><span>Home</span></a>
+            <a href="food-diary.html" class="bottom-nav-item"><i class="fas fa-utensils"></i><span>Diary</span></a>
+            <a href="exercise.html" class="bottom-nav-item"><i class="fas fa-running"></i><span>Exercise</span></a>
+            <a href="progress.html" class="bottom-nav-item"><i class="fas fa-chart-line"></i><span>Progress</span></a>
+            <a href="goals.html" class="bottom-nav-item"><i class="fas fa-bullseye"></i><span>Goals</span></a>
+        </div>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer" style="padding: 30px 0;">
+        <div class="container text-center">
+            <p>&copy; 2025 MyFitnessPal, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../data/food-database.js"></script>
+    <script src="../data/exercise-database.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/settings.js"></script>
+</body>
+</html>
