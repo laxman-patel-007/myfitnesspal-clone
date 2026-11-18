@@ -1,6 +1,7 @@
 # MyFitnessPal Web Clone — Nutrition & Health Tracking Platform
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Live Demo](https://img.shields.io/badge/Live-Demo%20on%20GitHub%20Pages-2ea44f?logo=github)](https://laxman-patel-007.github.io/myfitnesspal-clone/)
 [![Vanilla JS](https://img.shields.io/badge/Vanilla-ES6+-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![CSS3 Design Tokens](https://img.shields.io/badge/CSS3-Design%20Tokens-1572B6?logo=css3)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![Chart.js](https://img.shields.io/badge/Visualizations-Chart.js-FF6384?logo=chartdotjs&logoColor=white)](https://www.chartjs.org/)
@@ -10,6 +11,8 @@ A responsive web application replicating the core user flows, health analytics, 
 ---
 
 ## 🚀 Live Demo & Recruiter Fast-Track
+
+🔗 **Live Website**: [https://laxman-patel-007.github.io/myfitnesspal-clone/](https://laxman-patel-007.github.io/myfitnesspal-clone/)
 
 - **1-Click Recruiter Demo**: On the login page, click **"⚡ 1-Click Demo Login"** to instantly access an active demo account (*Sarah Jenkins*) pre-seeded with:
   - Active **14-day logging streak**
