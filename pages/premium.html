@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Membership | MyFitnessPal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .pricing-card {
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 36px 30px;
+            position: relative;
+            transition: var(--transition);
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .pricing-card.featured {
+            border-color: #f59e0b;
+            box-shadow: 0 10px 30px -4px rgba(245, 158, 11, 0.2);
+        }
+        .pricing-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .pricing-price {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--navy-deep);
+            margin: 14px 0 6px 0;
+            line-height: 1;
+        }
+        .pricing-features-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+        .pricing-features-list li i {
+            color: var(--success);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <span class="logo-mark"><i class="fas fa-heartbeat"></i></span>
+                    myfitnesspal
+                </a>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <!-- Injected by auth.js -->
+            </ul>
+            <div class="auth-buttons">
+                <!-- Injected by auth.js -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Premium Hero Section -->
+    <section class="hero" style="background: linear-gradient(135deg, #07172e 0%, #1e1b4b 50%, #4338ca 100%);">
+        <div class="container text-center" style="display: block; max-width: 820px; margin: 0 auto;">
+            <div class="hero-badge-pill" style="margin: 0 auto 20px auto;">
+                <i class="fas fa-crown" style="color: #f59e0b;"></i> MyFitnessPal Premium
+            </div>
+            <h1 style="font-size: 48px; margin-bottom: 18px;">Unlock Your Full Potential with <span class="gradient-text">Premium</span></h1>
+            <p style="font-size: 19px; color: #cbd5e1; margin-bottom: 28px;">
+                Advanced nutrient tracking, custom macronutrient goals by meal, barcode scanning without limits, and zero ads.
+            </p>
+
+            <!-- Recruiter Interactive Plan Toggle -->
+            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: var(--radius-lg); padding: 18px 24px; max-width: 520px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+                <div style="text-align: left;">
+                    <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: #fbbf24; font-weight: 700;">Portfolio Interactive Toggle</div>
+                    <div style="font-size: 15px; font-weight: 700; color: var(--white);">Current Plan: <span id="current-membership-status">Premium</span></div>
+                </div>
+                <button class="btn btn-sm btn-demo-pill" id="toggle-premium-status-btn">
+                    <i class="fas fa-sync-alt"></i> Toggle Plan
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Features Grid -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Members Love Premium</h2>
+                <p>Designed to give you granular control and deeper nutritional insights.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-number" style="background: #fef3c7; color: #b45309;"><i class="fas fa-barcode"></i></div>
+                    <h3>Unlimited Barcode Scanning</h3>
+                    <p>Scan packaged food instantly with your smartphone camera to log calories and verified nutrition in seconds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-number" style="background: #ede9fe; color: #6d28d9;"><i class="fas fa-sliders-h"></i></div>
+                    <h3>Custom Macros by Meal</h3>
+                    <p>Tailor your protein, carb, and fat targets differently for workout days, rest days, or per meal.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-number" style="background: #ecfdf5; color: #047857;"><i class="fas fa-ban"></i></div>
+                    <h3>100% Ad-Free Experience</h3>
+                    <p>Stay focused on your daily tracking without banners, sponsored promotions, or interruptions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-number" style="background: #e0f2fe; color: #0369a1;"><i class="fas fa-chart-area"></i></div>
+                    <h3>Deep Nutrient Insights</h3>
+                    <p>Track Net Carbs, fiber, sodium, saturated fat, and micronutrient breakdowns across any time window.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-number" style="background: #fdf2f8; color: #be185d;"><i class="fas fa-camera"></i></div>
+                    <h3>Progress Photo Timeline</h3>
+                    <p>Visually monitor your physical transformation by securely capturing side-by-side progress photos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-number" style="background: #fff7ed; color: #c2410c;"><i class="fas fa-utensils"></i></div>
+                    <h3>Exclusive Recipe Collections</h3>
+                    <p>Browse dietitian-curated meal plans with pre-calculated macro ratios that add directly into your diary.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="ratings" style="background: var(--bg-page);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Choose Your Membership Plan</h2>
+                <p>Start your 30-day free trial. Cancel anytime with one click.</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Monthly Plan -->
+                <div class="pricing-card">
+                    <h3 style="font-size: 20px; font-weight: 800; color: var(--navy-deep);">Monthly Plan</h3>
+                    <div class="pricing-price">$9.99 <span style="font-size: 14px; color: var(--text-muted); font-weight: 500;">/ month</span></div>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">Flexible month-to-month subscription.</p>
+                    <ul class="pricing-features-list mb-4">
+                        <li><i class="fas fa-check"></i> Unlimited Barcode Scanner</li>
+                        <li><i class="fas fa-check"></i> Custom Macronutrient Targets</li>
+                        <li><i class="fas fa-check"></i> 100% Ad-Free Experience</li>
+                        <li><i class="fas fa-check"></i> Deep Nutrient Analytics</li>
+                    </ul>
+                    <button class="btn btn-secondary w-100 btn-lg select-plan-btn" data-plan="monthly">
+                        Select Monthly
+                    </button>
+                </div>
+
+                <!-- Annual Plan -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Best Value • Save 35%</div>
+                    <h3 style="font-size: 20px; font-weight: 800; color: var(--navy-deep);">Annual Plan</h3>
+                    <div class="pricing-price">$79.99 <span style="font-size: 14px; color: var(--text-muted); font-weight: 500;">/ year</span></div>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">Just $6.67/month billed annually.</p>
+                    <ul class="pricing-features-list mb-4">
+                        <li><i class="fas fa-check"></i> All Monthly Premium Features</li>
+                        <li><i class="fas fa-check"></i> Priority Expert Coaching Support</li>
+                        <li><i class="fas fa-check"></i> Complete Recipe & Workout Library</li>
+                        <li><i class="fas fa-check"></i> 30-Day Money Back Guarantee</li>
+                    </ul>
+                    <button class="btn btn-primary w-100 btn-lg select-plan-btn" data-plan="annual">
+                        Start 30-Day Free Trial
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Bottom App Nav -->
+    <nav class="mobile-bottom-nav">
+        <div class="bottom-nav-grid">
+            <a href="dashboard.html" class="bottom-nav-item"><i class="fas fa-th-large"></i><span>Home</span></a>
+            <a href="food-diary.html" class="bottom-nav-item"><i class="fas fa-utensils"></i><span>Diary</span></a>
+            <a href="exercise.html" class="bottom-nav-item"><i class="fas fa-running"></i><span>Exercise</span></a>
+            <a href="progress.html" class="bottom-nav-item"><i class="fas fa-chart-line"></i><span>Progress</span></a>
+            <a href="goals.html" class="bottom-nav-item"><i class="fas fa-bullseye"></i><span>Goals</span></a>
+        </div>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer" style="padding: 30px 0;">
+        <div class="container text-center">
+            <p>&copy; 2025 MyFitnessPal, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../data/food-database.js"></script>
+    <script src="../data/exercise-database.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/premium.js"></script>
+</body>
+</html>
