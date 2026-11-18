@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Diary | MyFitnessPal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <span class="logo-mark"><i class="fas fa-heartbeat"></i></span>
+                    myfitnesspal
+                </a>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <!-- Injected by auth.js -->
+            </ul>
+            <div class="auth-buttons">
+                <!-- Injected by auth.js -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Exercise View -->
+    <section class="dashboard">
+        <div class="container dashboard-grid">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                    <li><a href="food-diary.html"><i class="fas fa-utensils"></i> Food Diary</a></li>
+                    <li><a href="exercise.html" class="active"><i class="fas fa-running"></i> Exercise Diary</a></li>
+                    <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress & Weight</a></li>
+                    <li><a href="goals.html"><i class="fas fa-bullseye"></i> Nutrition Goals</a></li>
+                    <li><a href="professionals.html"><i class="fas fa-user-tie"></i> Book a Coach</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li id="premium-sidebar-link"><a href="premium.html" style="color: #d97706;"><i class="fas fa-crown"></i> Premium</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <div class="diary-date-nav">
+                    <h1 style="font-size: 26px; font-weight: 800; color: var(--navy-deep);">Exercise & Workouts</h1>
+                    <div class="diary-date-selector">
+                        <button id="prev-day" title="Previous Day"><i class="fas fa-chevron-left"></i></button>
+                        <span class="current-date-title" id="current-date">Today</span>
+                        <button id="next-day" title="Next Day"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Daily Summary Stats Grid -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="card-title"><i class="fas fa-fire" style="color: var(--success);"></i> Daily Exercise Summary</h2>
+                    </div>
+                    <div class="card-body">
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center;">
+                            <div style="background: var(--bg-page); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+                                <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;">Calories Burned</div>
+                                <div style="font-size: 28px; font-weight: 800; color: var(--success);"><span id="calories-burned">0</span> kcal</div>
+                            </div>
+                            <div style="background: var(--bg-page); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+                                <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;">Active Minutes</div>
+                                <div style="font-size: 28px; font-weight: 800; color: var(--navy-deep);"><span id="exercise-time">0</span> min</div>
+                            </div>
+                            <div style="background: var(--bg-page); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+                                <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;">Weekly Goal Progress</div>
+                                <div style="font-size: 28px; font-weight: 800; color: var(--primary-blue);"><span id="exercise-goal-progress">1</span> / <span id="exercise-goal">4</span> days</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Today's Logged Workouts -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="card-title"><i class="fas fa-dumbbell"></i> Completed Workouts</h2>
+                        <button id="add-exercise-btn" class="btn btn-primary btn-sm">
+                            <i class="fas fa-plus"></i> Log Workout
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="exercise-entries" class="exercise-entries">
+                            <!-- Populated by exercise.js -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guided Workouts Banner (Premium Preview) -->
+                <div class="card" style="background: linear-gradient(135deg, #07172e, #0a2540); color: var(--white); padding: 28px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                        <div>
+                            <span class="badge-premium mb-2"><i class="fas fa-crown"></i> Premium Workouts</span>
+                            <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 6px;">Over 500+ Video Coaching Routines</h3>
+                            <p style="font-size: 14px; color: #cbd5e1; max-width: 500px; margin-bottom: 0;">Follow guided strength, HIIT, yoga, and athletic routines directly synchronized to your calorie burn.</p>
+                        </div>
+                        <a href="premium.html" class="btn btn-demo-pill btn-lg">Explore Routines</a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Add Exercise Modal -->
+    <div class="modal-overlay" id="add-exercise-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Log an Exercise</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-input-wrapper mb-3">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="exercise-search-input" placeholder="Search exercises (e.g. Running, Cycling, HIIT, Weights)...">
+                </div>
+                <div class="quick-pills-row mb-3" id="exercise-cat-pills">
+                    <button class="quick-pill active" data-category="all">All</button>
+                    <button class="quick-pill" data-category="cardio">Cardio</button>
+                    <button class="quick-pill" data-category="strength">Strength</button>
+                    <button class="quick-pill" data-category="flexibility">Flexibility</button>
+                </div>
+                <div class="food-results-list" id="exercise-list-container" style="max-height: 220px; overflow-y: auto;">
+                    <!-- Populated by JS -->
+                </div>
+
+                <!-- Selected Exercise Form -->
+                <div id="exercise-details" class="hidden mt-3" style="padding-top: 16px; border-top: 1px solid var(--border);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                        <h4 id="selected-exercise-name" style="font-size: 16px; font-weight: 800; color: var(--navy-deep);">Exercise</h4>
+                        <div style="font-size: 18px; font-weight: 800; color: var(--success);" id="calculated-cals-preview">0 kcal</div>
+                    </div>
+                    <form id="add-exercise-form">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;" class="mb-3">
+                            <div>
+                                <label for="exercise-duration" class="form-label">Duration (minutes)</label>
+                                <input type="number" id="exercise-duration" class="form-control" value="30" min="1" max="300" required>
+                            </div>
+                            <div>
+                                <label for="exercise-intensity" class="form-label">Intensity</label>
+                                <select id="exercise-intensity" class="form-control">
+                                    <option value="light">Light Pace</option>
+                                    <option value="moderate" selected>Moderate Effort</option>
+                                    <option value="vigorous">Vigorous / High</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close-btn">Cancel</button>
+                <button class="btn btn-primary" id="confirm-add-exercise-btn" disabled>
+                    <i class="fas fa-check"></i> Add to Diary
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom App Nav -->
+    <nav class="mobile-bottom-nav">
+        <div class="bottom-nav-grid">
+            <a href="dashboard.html" class="bottom-nav-item"><i class="fas fa-th-large"></i><span>Home</span></a>
+            <a href="food-diary.html" class="bottom-nav-item"><i class="fas fa-utensils"></i><span>Diary</span></a>
+            <a href="exercise.html" class="bottom-nav-item active"><i class="fas fa-running"></i><span>Exercise</span></a>
+            <a href="progress.html" class="bottom-nav-item"><i class="fas fa-chart-line"></i><span>Progress</span></a>
+            <a href="goals.html" class="bottom-nav-item"><i class="fas fa-bullseye"></i><span>Goals</span></a>
+        </div>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer" style="padding: 30px 0;">
+        <div class="container text-center">
+            <p>&copy; 2025 MyFitnessPal, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../data/food-database.js"></script>
+    <script src="../data/exercise-database.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/exercise.js"></script>
+</body>
+</html>
